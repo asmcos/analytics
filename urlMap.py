@@ -6,7 +6,7 @@
 import re
 import urllib
 from urllib.parse import urlparse
-
+import AIDatas
 
 #urllib.parse.parse_qs(query)
 #urlparse.urlparse
@@ -20,7 +20,7 @@ maplist = [
 
 
 def getmapregex():
-    return []#AIDatas.getmap()
+    return AIDatas.AIDatas().getmap()
 
 def handlerRequest(request):
     p = urlparse(request['RequestURI'])
@@ -34,6 +34,8 @@ def handlerRequest(request):
 def initmap ():
     global maplist
     ml = getmapregex()
+    for m in ml:
+        maplist.append(m)
 
 def matchMap(path):
     for m in maplist:
